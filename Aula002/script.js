@@ -41,6 +41,14 @@
 
 //Exercicio 3
 
+const { throws } = require("assert");
+
+// Ana Maria organiza campeonatos de diversos esportes, como futebol, basquete, entre outros, crie uma função que receba 40 nomes de times e quantos times cada grupo deve ter, a função deve mostrar na tela os times separados em grupos porém sorteados aleatóriamente.
+const readline = require("readline").createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
 let times = [
   "Ases da Chuteira",
 
@@ -122,36 +130,33 @@ let times = [
   "Time dos Sonhos",
 ];
 
-var qtd = prompt("Digite quantos times quer que tenha em cada grupo: ");
+let Numeros = [];
 
-var casa = [];
-var grupos = [];
-
-for (var i = 0; i < 40; i++) {
-  var numero = Math.round(Math.random() * 40);
-  if (casa[i] != numero) {
-    casa.push(numero);
+function Sortearnumero(max) {
+  let nvnumero = Math.floor(Math.random() * max);
+  while (Numeros.includes(nvnumero)) {
+    nvnumero = Math.floor(Math.random() * max);
   }
+  Numeros.push(nvnumero);
+  return nvnumero;
 }
 
-var i = 0;
+function separarTime(times) {
+  let count = 0;
 
-let qtdtime = 40 / qtd;
+  readline.question("Quantos times cada grupo terá?", (qtdTime) => {
+    console.log("--------------------");
+    do {
+      for (let i = 0; i < qtdTime; i++) {
+        console.log(times[Sortearnumero(times.length)]);
+        count++;
+      }
+      console.log("--------------------");
+    } while (count < times.length);
+  });
+}
 
-do {
-  for (let i = 0; i < qtd; i++) {
-    var numero = Math.round(Math.random() * 40);
-
-    if (casa[i] != numero) {
-      console.log(times[numero]);
-      grupos[i] = times[numero];
-    }
-  }
-
-  console.log(" ");
-
-  i++;
-} while (i < qtdtime);
+separarTime(times);
 
 //Exercicio 4
 
