@@ -1,5 +1,13 @@
 const tabelaPrincipal = document.querySelector("#tabela-principal");
 
+var mat = document.querySelector("#mat");
+var valo = document.querySelector("#valor");
+
+mat = mat.value;
+valo = valo.value;
+
+console.log(mat, valo);
+
 const dados = [
   {
     funcionario: "Vitoria da Cruz",
@@ -62,7 +70,6 @@ const dados = [
     ],
   },
 ];
-
 let valorTotal = 0;
 var comissao = 0;
 
@@ -82,7 +89,12 @@ dados.forEach((dado) => {
     valorTotal = valorTotal + dado.vendas[i].valor;
     comissao = valorTotal * (dado.comissao / 100);
   }
-  
+
+  if (mat == dado.matricula) {
+    valorTotal = valorTotal + valo;
+  } else {
+  }
+
   let tdTotalVenda = document.createElement("td");
   tdTotalVenda.innerHTML = "R$ " + valorTotal.toFixed(2);
 
