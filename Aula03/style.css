@@ -1,0 +1,15 @@
+.light{
+    background-color: #e5e5e5;
+}
+.light h1{
+    color: rgb(49, 49, 49);
+}
+.dark{
+    background-color: #353535;
+}
+.dark h1{
+    color: #e5e5e5;
+}
+.n1{
+    color: red;
+}
